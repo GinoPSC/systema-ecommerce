@@ -103,7 +103,7 @@ export default createStore({
         console.log(response)
       });
 
-      commit('updateCart', posteada);
+      commit('updateCart', posteada.products);
     }
   },
   modules: {

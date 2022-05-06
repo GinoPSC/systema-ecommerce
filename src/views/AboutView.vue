@@ -11,6 +11,25 @@
       </template>
       <template v-if="$store.state.cart.length != 1">
         <h1>Your cart has stuff</h1>
+        <el-scrollbar height="120px">
+          <el-space wrap>
+            <el-card
+              v-for="index in $store.state.cart.length-1"
+              :key="index"
+              class="box-card"
+              style="width: 170px; height: 110px;"
+            >
+              <template #header>
+                <div class="card-header">
+                  <span>ProductID: {{$store.state.cart[index][0]['productId']}}</span>
+                </div>
+              </template>
+              <div class="text item">
+                <span>Quantity: {{$store.state.cart[index][0]['quantity']}}</span>
+              </div> 
+            </el-card>
+          </el-space>
+        </el-scrollbar><br>
       </template>
     </template>
 
