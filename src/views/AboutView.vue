@@ -50,7 +50,7 @@
     </template>
 
     <template v-if="$store.state.cart.length != 1 && active == 3">
-      <el-button style="margin-top: 12px" @click="$store.commit('emptyCart'); next();">Finish</el-button>
+      <el-button style="margin-top: 12px" @click="$store.commit('emptyCart'); next(); complete();">Finish</el-button>
     </template>
   </div>
 </template>
@@ -62,6 +62,12 @@
 
   function next() {
     if (active.value++ > 2) active.value = 0
+  }
+
+  import { ElMessage } from 'element-plus'
+
+  function complete() {
+    ElMessage('Product Purchased, Thanks!')
   }
 </script>
 
