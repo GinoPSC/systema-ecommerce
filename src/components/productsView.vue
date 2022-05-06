@@ -1,6 +1,7 @@
 <template>
   <div class="Product_Menu">
     <el-scrollbar height="450px">
+      <!--tarjetas con la informacion de los productos-->
       <el-space wrap>
         <el-card
           v-for="things in $store.state.products"
@@ -39,6 +40,7 @@
             </el-button>
           </div>
         </el-card>
+        <!--ventana de confirmacion para añadir un producto al carro-->
         <el-drawer v-model="drawer" direction="ttb" :with-header="false" size="55%">
           <span>You have selected a product!</span><hr>
           <div class="row">
@@ -73,6 +75,7 @@
                   Rate: {{$store.state.singleProduct.rating.rate}}
                    - {{$store.state.singleProduct.rating.count}}
                 </span><br><br>
+                <!--aqui se ingresa la cantidad deseada para el producto-->
                 <span>Amount: </span>
                 <el-button
                   type="danger"
@@ -87,6 +90,8 @@
                   circle
                   @click="$store.commit('addCount')"
                 >+</el-button><br><br>
+                <!--aqui confirmamos la operacion-->
+                <!--si clickeamos fuera de la ventana, la operacion se cancela-->
                 <el-button
                   type="success"
                   round

@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <!--configuracion para nombrar los pasos del proceso de compra-->
     <el-steps :active="active" finish-status="success">
       <el-step title="Step 1" />
       <el-step title="Step 2" />
@@ -9,6 +10,7 @@
       <template v-if="$store.state.cart.length == 1">
         <h1>Your cart is empty</h1>
       </template>
+      <!--productos en el carrito-->
       <template v-if="$store.state.cart.length != 1">
         <h1>Your cart has stuff</h1>
         <el-scrollbar height="120px">
@@ -35,16 +37,20 @@
 
     <template v-if="active == 1">
       <h1>Set your location</h1>
+      <!--formulario de ingreso de ubicacion de envio-->
     </template>
 
     <template v-if="active == 2">
       <h1>Choose a payment option</h1>
+      <!--formulario para elegir el tipo de pago-->
     </template>
 
     <template v-if="active == 3">
       <h1>Confirm the information</h1>
+      <!--pantalla que muestre un resumen de la compra-->
     </template>
 
+    <!--botones para avanzar al siguiente paso y confirmar compra-->
     <template v-if="$store.state.cart.length != 1 && active != 3">
       <el-button style="margin-top: 12px" @click="next()">Next step</el-button>
     </template>

@@ -30,7 +30,7 @@ const activeIndex2 = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
-
+//importacion de iconos especificos para mostrar
 import {
   Box,
   ShoppingCart as shoppingCart,

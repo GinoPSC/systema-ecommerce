@@ -7,6 +7,7 @@
         </template>
         <div>
           <el-space wrap>
+            <!--configuracion de botones para filtrar por categoria-->
             <el-card style="width: 200px; height: 130px;">
               <template #header>
                 <div class="card-header">

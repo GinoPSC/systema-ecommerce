@@ -14,18 +14,22 @@ export default createStore({
   getters: {
   },
   mutations: {
+    //productos
     updateProducts(state, moreProducts){
       state.products = moreProducts;
-    },
-    updateSingleProduct(state, otherProduct){
-      state.singleProduct = otherProduct;
-    },
-    updateCategories(state, moreCategories){
-      state.categories = moreCategories;
     },
     updateTempProd(state, NewTemp){
       state.tempProduct = NewTemp;
     },
+    //producto unico, esto para evitar sobre-escribir la lista original de productos
+    updateSingleProduct(state, otherProduct){
+      state.singleProduct = otherProduct;
+    },
+    //categorias
+    updateCategories(state, moreCategories){
+      state.categories = moreCategories;
+    },
+    //cantidad de un producto
     startCount(state){
       state.cantProduct=1;
     },
@@ -35,6 +39,7 @@ export default createStore({
     dropCount(state){
       if(state.cantProduct>1){state.cantProduct--;}
     },
+    //manejo del carrito
     updateCart(state, newProd){
       state.cart.push(newProd);
     },
@@ -43,18 +48,21 @@ export default createStore({
     }
   },
   actions: {
+    //coneccion con la api para recolectar los datos de los productos
     getAPIProducts({commit}){
       axios.get('https://fakestoreapi.com/products')
       .then(response =>{
         commit('updateProducts', response.data)
       })
     },
+    //coneccion con la api para recolectar los datos de las categorias
     getAPICategories({commit}){
       axios.get('https://fakestoreapi.com/products/categories')
       .then(response =>{
         commit('updateCategories', response.data)
       })
     },
+    //coleccion de productos filtrados por categoria
     productsCategory1({commit}){
       axios.get('https://fakestoreapi.com/products/category/electronics')
       .then(response =>{
@@ -79,6 +87,7 @@ export default createStore({
         commit('updateProducts', response.data)
       })
     },
+    //obtencion de un producto especifico
     getAProduct({commit}, TID){
       let url = 'https://fakestoreapi.com/products/'+TID;
       axios.get(url)
@@ -86,6 +95,7 @@ export default createStore({
         commit('updateSingleProduct', response.data)
       })
     },
+    //añadir productos al carro de compras
     addTOcart({commit}, prodData){
       let posteada = {
         userId: 1,
